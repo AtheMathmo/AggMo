@@ -1,0 +1,43 @@
+{
+    "optim": {
+        "optimizer": { {% include 'optim/%s.json' % optim %} },
+        "lr_schedule": {
+            "name": "step",
+            "lr_decay": 0.1,
+            "milestones": [200, 400, 800],
+            "last_epoch": -1
+        },
+        "epochs": 1000,
+        "batch_size": 200,
+        "wdecay": 0.0,
+        "criterion": {
+            "tag": "mse",
+            "minmax": "min"
+        },
+        "finetune": {
+            "epochs": 0,
+            "final_mom": 0.9,
+            "warm": false
+        },
+        "patience": 250
+    },
+    "model": {
+        "name": "ce_fc_ae",
+        "layers": [1000, 500, 250, 30],
+        "activation": "relu"
+    },
+    "data": {
+        "name": "mnist",
+        "root": "data",
+        "transform": false,
+        "validation": true,
+        "train_size": 0.9,
+        "input_dim": 784,
+        "num_workers": 0,
+        "class_count": 10
+    },
+    "cuda": true,
+    "task": "encoder",
+    "output_root": "out/mnist_ae",
+    "exp_name": "ae"
+}

@@ -1,0 +1,45 @@
+{
+    "optim": {
+        "optimizer": { {% include 'optim/%s.json' % optim %} },
+        "lr_schedule": {
+            "name": "step",
+            "lr_decay": 0.1,
+            "milestones": [150, 250],
+            "last_epoch": -1
+        },
+        "epochs": 400,
+        "batch_size": 128,
+        "wdecay": 5e-4,
+        "criterion": {
+            "tag": "acc",
+            "minmax": "max"
+        },
+        "finetune": {
+            "epochs": 0,
+            "final_mom": 0.9,
+            "warm": false
+        },
+        "patience": 250
+    },
+    "model": {
+        "name": "resnet34"
+    },
+    "data": {
+        "name": "cifar10",
+        "root": "data",
+        "transform": {
+            "name": "cifar",
+            "norm_mean": [0.4914, 0.4822, 0.4465],
+            "norm_std": [0.2023, 0.1994, 0.2010]
+        },
+        "validation": true,
+        "train_size": 0.8,
+        "input_dim": 3072,
+        "num_workers": 0,
+        "class_count": 10
+    },
+    "cuda": true,
+    "task": "classify",
+    "output_root": "out/cifar-10",
+    "exp_name": "classify"
+}
