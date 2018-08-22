@@ -11,18 +11,18 @@ from tensorflow.python.training import optimizer
 
 
 class AggMo(optimizer.Optimizer):
-    def __init__(self, learning_rate=0.1, betas=[0,0.9,0.99], use_locking=False, name="AggMo"):
+    def __init__(self, learning_rate=0.1, betas=[0, 0.9, 0.99], use_locking=False, name="AggMo"):
         super(AggMo, self).__init__(use_locking, name)
         self._lr = learning_rate
         self._betas = betas
         
     @classmethod
-    def from_exp_form(cls, learning_rate, a=0.1, K=3, use_locking=False, name="AggMo"):
+    def from_exp_form(cls, learning_rate, a=0.1, k=3, use_locking=False, name="AggMo"):
         betas = [1.0 - a**i for i in range(K)]
         return cls(learning_rate, betas, use_locking, name)
 
     def _create_slots(self, var_list):
-        # Create slots for the first and second moments.
+        # Create slots for each momentum component
         for v in var_list :
             for i in range(len(self._betas)):
                 self._zeros_slot(v, "momentum_{}".format(i), self._name)

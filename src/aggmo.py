@@ -6,7 +6,7 @@ class AggMo(Optimizer):
     r"""Implements Aggregated Momentum Gradient Descent
     """
 
-    def __init__(self, params, lr=required, betas=[0.0, 0.9, 0.99, 0.999], weight_decay=0):
+    def __init__(self, params, lr=required, betas=[0.0, 0.9, 0.99], weight_decay=0):
         defaults = dict(lr=lr, betas=betas, weight_decay=weight_decay)
         super(AggMo, self).__init__(params, defaults)
 

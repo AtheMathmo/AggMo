@@ -18,7 +18,7 @@ The AggMo class also has an "exponential form" constructor. In this case the dam
 The following is equivalent to using the beta values [0, 0.9, 0.99]:
 
 ```python
-optimizer = aggmo.AggMo.from_exp_form(model.parameters(), lr, a=0.1, K=3)
+optimizer = aggmo.AggMo.from_exp_form(model.parameters(), lr, a=0.1, k=3)
 ```
 
 ### Tensorflow
@@ -32,7 +32,7 @@ optimizer = aggmo.AggMo(lr, betas=[0, 0.9, 0.99])
 Or using the exponential form:
 
 ```python
-optimizer = aggmo.AggMo.from_exp_form(lr, a=0.1, K=3)
+optimizer = aggmo.AggMo.from_exp_form(lr, a=0.1, k=3)
 ```
 
 ## Running Experiments
