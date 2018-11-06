@@ -33,7 +33,7 @@
             "norm_std": [0.2023, 0.1994, 0.2010]
         },
         "validation": true,
-        "train_size": 0.8,
+        "train_size": 0.9,
         "input_dim": 3072,
         "num_workers": 0,
         "class_count": 10
