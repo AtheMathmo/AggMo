@@ -79,4 +79,6 @@ class Engine(object):
             closure()
             state['t'] += 1
         self.hook('on_end', state)
+        # Put back into training mode!
+        model.train()
         return state
